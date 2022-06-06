@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import JNavbar from "./components/JNavbar";
+
+export const CountriesData = React.createContext();
+export const CountryData = React.createContext();
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    return await axios
+      .get("https://restcountries.com/v2/all")
+      .then((response) => setCountries(response.data))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CountriesData.Provider value={countries}>
+        <JNavbar />
+        {loading && <h4>loading...</h4>}
+      </CountriesData.Provider>
     </div>
   );
 }
