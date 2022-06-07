@@ -47,15 +47,15 @@ function Capital() {
               } else if (
                 value.capital &&
                 value.capital
-                  .toLowerCase()
-                  .includes(searchCapital.toLowerCase())
+                  .toLocaleLowerCase("tr")
+                  .includes(searchCapital.toLocaleLowerCase("tr"))
               ) {
                 return value;
               } else return false;
             })
-            .map((country) => {
+            .map((country, i) => {
               return (
-                <tr key={country.numericCode}>
+                <tr key={i}>
                   <td>
                     <img
                       src={country.flag}

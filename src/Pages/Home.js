@@ -37,6 +37,7 @@ function Home() {
       }}
     >
       <h3>COUNTRY DETAILS</h3>
+
       <input
         style={{
           borderRadius: "10px",
@@ -50,7 +51,6 @@ function Home() {
         autoFocus="autofocus"
         onChange={(e) => setSearch(e.target.value)}
       />
-
       <Row>
         <Col>
           <img

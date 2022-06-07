@@ -44,17 +44,16 @@ function Capital() {
               if (search === "") {
                 return value;
               } else if (
-                value.name.toLowerCase().includes(search.toLowerCase()) ||
-                (value.capital &&
-                  value.capital.toLowerCase().includes(search.toLowerCase())) ||
-                value.region.toLowerCase().includes(search.toLowerCase())
+                JSON.stringify(value)
+                  .toLocaleLowerCase("tr")
+                  .includes(search.toLocaleLowerCase("tr"))
               ) {
                 return value;
-              } else return false;
+              }
             })
-            .map((country) => {
+            .map((country, i) => {
               return (
-                <tr key={country.numericCode}>
+                <tr key={i}>
                   <td>
                     <img
                       src={country.flag}

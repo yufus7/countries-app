@@ -24,12 +24,11 @@ function App() {
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   };
-
   return (
     <div className="App">
       <CountriesData.Provider value={countries}>
         <JNavbar />
-        {loading && <h4>loading...</h4>}
+        {loading}
       </CountriesData.Provider>
     </div>
   );
