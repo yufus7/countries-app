@@ -3,25 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 function Home() {
-  const [country, setCountry] = useState([
-    {
-      name: "Turkey",
-      capital: "Ankara",
-      region: "Asia",
-      population: "84339067",
-      demonym: "Turkish",
-      flag: "https://flagcdn.com/tr.svg",
-    },
-  ]);
+  const [country, setCountry] = useState([{}]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     loadCountry(search);
   }, [search]);
 
-  const loadCountry = async (country) => {
+  const loadCountry = async (a) => {
     return await axios
-      .get(`https://restcountries.com/v2/name/${country}`)
+      .get(`https://restcountries.com/v2/name/${!a ? "Portugal" : a}`)
       .then((response) => setCountry(response.data))
       .catch((error) => console.log(error));
   };
@@ -37,13 +28,6 @@ function Home() {
       }}
     >
       <h3>COUNTRY DETAILS</h3>
-
-      <form class="example" action="action_page.php">
-        <input type="text" placeholder="Search.." name="search" />
-        <button type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-      </form>
       <input
         style={{
           borderRadius: "10px",

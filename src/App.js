@@ -27,8 +27,7 @@ function App() {
   return (
     <div className="App">
       <CountriesData.Provider value={countries}>
-        <JNavbar />
-        {loading}
+        {loading ? <h1>Loading...</h1> : <JNavbar />}
       </CountriesData.Provider>
     </div>
   );

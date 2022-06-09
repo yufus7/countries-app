@@ -1,9 +1,9 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "../Pages/Home";
-import Countries from "../Pages/Countries";
-import Capital from "../Pages/Capital";
-import Search from "../Pages/Search";
+import Home from "./Home";
+import Countries from "./Countries";
+import Capital from "./Capital";
+import Search from "./Search";
 
 function JNavbar() {
   return (
